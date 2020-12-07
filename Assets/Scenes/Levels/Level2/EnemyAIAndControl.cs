@@ -18,7 +18,8 @@ public class EnemyAIAndControl : MonoBehaviour
     public GameObject enemyCamera;
     public GameObject mainCamera;
 
-    private bool AutoMoving;
+    private bool autoMoving;
+    private bool thirdPersonView;
 
 
     private void Start()
@@ -26,36 +27,55 @@ public class EnemyAIAndControl : MonoBehaviour
         _target = PathPoints.pathPoints[_pointIndex];
         _animator = gameObject.GetComponentInChildren<Animator>();
         controller = GetComponent<CharacterController>();
-        AutoMoving = true;
+        autoMoving = true;
 
         enemyCamera.SetActive(false);
+        mainCamera = GameObject.Find("MainCamera");
     }
 
     private void Update()
     {
 
-        if (AutoMoving)
+        if (autoMoving)
         {
             AutoMove();
         }
         else
         {
-            if (controller.isGrounded)
+            //if (controller.isGrounded)
+            //{
+            //    moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+            //    moveDirection = transform.TransformDirection(moveDirection);
+            //    moveDirection *= speed;
+            //}
+            //moveDirection.y -= gravity * Time.deltaTime;
+            //controller.Move(moveDirection * Time.deltaTime);
+            if (Input.GetKey("w") || Input.GetKey(KeyCode.UpArrow))
             {
-                moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
-                moveDirection = transform.TransformDirection(moveDirection);
-                moveDirection *= speed;
+                _animator.SetInteger("AnimationPar", 1);
             }
+            else
+            {
+                _animator.SetInteger("AnimationPar", 0);
+            }
+            moveDirection = transform.forward * Input.GetAxis("Vertical") * speed;
+
+
+
             moveDirection.y -= gravity * Time.deltaTime;
+
+            float turn = Input.GetAxis("Horizontal");
+            transform.Rotate(0, turn * turnSpeed * Time.deltaTime, 0);
             controller.Move(moveDirection * Time.deltaTime);
         }
     }
 
     private void OnMouseUpAsButton()
     {
-        AutoMoving = !AutoMoving;
-        mainCamera.SetActive(false);
-        enemyCamera.SetActive(true);
+        autoMoving = !autoMoving;
+        thirdPersonView = !thirdPersonView;
+        mainCamera.SetActive(!thirdPersonView);
+        enemyCamera.SetActive(thirdPersonView);
     }
 
     private void AutoMove()
