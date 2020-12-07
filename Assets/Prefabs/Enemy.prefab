@@ -466,9 +466,10 @@ GameObject:
   - component: {fileID: 1915215749970657146}
   - component: {fileID: 1279090455244059386}
   - component: {fileID: 4980053672106697686}
+  - component: {fileID: 4284713290520036219}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -544,6 +545,20 @@ MonoBehaviour:
   gravity: 10
   enemyCamera: {fileID: 2588143131595255223}
   mainCamera: {fileID: 0}
+--- !u!136 &4284713290520036219
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3080257505241659913}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.06522614
+  m_Height: 0.25
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.12, z: 0}
 --- !u!1 &3989636174190603528
 GameObject:
   m_ObjectHideFlags: 0
