@@ -11,9 +11,9 @@ namespace Sandbox.Gary
 
         private Animator _animator;
         private CharacterController _controller;
+        private static readonly int AnimationPar = Animator.StringToHash("AnimationPar");
 
 
-        // Start is called before the first frame update
         private void Start()
         {
             _target = PathPoints.pathPoints[_pointIndex];
@@ -21,23 +21,46 @@ namespace Sandbox.Gary
             _controller = GetComponent<CharacterController>();
         }
 
-        // Update is called once per frame
         private void Update()
         {
-            _animator.SetInteger("AnimationPar", 1);
+            // Set animation
+            _animator.SetInteger(AnimationPar, 1);
+
+            // Update move
             var direction = _target.position - transform.position;
-            Debug.Log(direction);
-            // transform.Translate(direction.normalized * (speed * Time.deltaTime), Space.World);
-            _controller.Move(direction.normalized * (speed * Time.deltaTime));
-            if (!(Vector3.Distance(_target.position, transform.position) < 0.2f)) return;
-            _pointIndex++;
-            if (_pointIndex >= PathPoints.pathPoints.Length)
+            const float err = 0.4f;
+            if (direction.x > err)
             {
-                Destroy(gameObject);
-                return;
+                transform.rotation = Quaternion.Euler(0, 90, 0);
+            }
+            else if (direction.x < -err)
+            {
+                transform.rotation = Quaternion.Euler(0, 270, 0);
+            }
+            else if (direction.z > err)
+            {
+                transform.rotation = Quaternion.Euler(0, 0, 0);
+            }
+            else
+            {
+                transform.rotation = Quaternion.Euler(0, 180, 0);
             }
 
-            _target = PathPoints.pathPoints[_pointIndex];
+
+            _controller.Move(direction.normalized * (speed * Time.deltaTime));
+
+            // Reach the current path point
+            if (Vector3.Distance(_target.position, transform.position) < err / 2)
+            {
+                _pointIndex++;
+                if (_pointIndex >= PathPoints.pathPoints.Length)
+                {
+                    Destroy(gameObject);
+                    return;
+                }
+
+                _target = PathPoints.pathPoints[_pointIndex];
+            }
         }
     }
 }
