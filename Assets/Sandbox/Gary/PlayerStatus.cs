@@ -5,12 +5,15 @@ namespace Sandbox.Gary
 {
     public class PlayerStatus : MonoBehaviour
     {
-        public const int StartMoney = 500;
+        [SerializeField] private int startMoney = 500;
         public static int Money;
+        [SerializeField] private int startLives = 3;
+        public static int Lives;
 
         private void Start()
         {
-            Money = StartMoney;
+            Money = startMoney;
+            Lives = startLives;
         }
     }
 }

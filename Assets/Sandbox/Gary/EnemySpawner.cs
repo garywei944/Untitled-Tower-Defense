@@ -27,6 +27,12 @@ namespace Sandbox.Gary
         // Update is called once per frame
         private void Update()
         {
+            if (GameManager.IsOver)
+            {
+                EnemyAlive = 0;
+                return;
+            }
+
             if (EnemyAlive > 0)
             {
                 return;
