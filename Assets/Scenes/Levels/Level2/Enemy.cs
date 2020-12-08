@@ -15,6 +15,7 @@ public class Enemy : MonoBehaviour
     private Animator _animator;
     private CharacterController controller;
     private static readonly int AnimationPar = Animator.StringToHash("AnimationPar");
+    private const float err = 3f;
 
     public GameObject enemyCamera;
     public GameObject mainCamera;
@@ -70,6 +71,19 @@ public class Enemy : MonoBehaviour
             transform.Rotate(0, turn * turnSpeed * Time.deltaTime, 0);
             controller.Move(moveDirection * Time.deltaTime);
         }
+
+        // Reach the current path point
+        if (Vector3.Distance(_target.position, transform.position) < err / 2)
+        {
+            _pointIndex++;
+            if (_pointIndex >= PathPoints.pathPoints.Length)
+            {
+                Destroy(gameObject);
+                return;
+            }
+
+            _target = PathPoints.pathPoints[_pointIndex];
+        }
     }
 
     private void OnMouseUpAsButton()
@@ -86,7 +100,6 @@ public class Enemy : MonoBehaviour
 
         // Update move
         var direction = _target.position - transform.position;
-        const float err = 0.4f;
         if (direction.x > err)
         {
             transform.rotation = Quaternion.Euler(0, 90, 0);
@@ -107,17 +120,17 @@ public class Enemy : MonoBehaviour
 
         controller.Move(direction.normalized * (speed * Time.deltaTime));
 
-        // Reach the current path point
-        if (Vector3.Distance(_target.position, transform.position) < err / 2)
-        {
-            _pointIndex++;
-            if (_pointIndex >= PathPoints.pathPoints.Length)
-            {
-                Destroy(gameObject);
-                return;
-            }
+        //// Reach the current path point
+        //if (Vector3.Distance(_target.position, transform.position) < err / 2)
+        //{
+        //    _pointIndex++;
+        //    if (_pointIndex >= PathPoints.pathPoints.Length)
+        //    {
+        //        Destroy(gameObject);
+        //        return;
+        //    }
 
-            _target = PathPoints.pathPoints[_pointIndex];
-        }
+        //    _target = PathPoints.pathPoints[_pointIndex];
+        //}
     }
 }
