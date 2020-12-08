@@ -13,7 +13,7 @@ namespace Sandbox.Gary
         public float minY = 20;
         public float maxY = 80;
         public float minZ = -15;
-        public float maxZ = 30;
+        public float maxZ = 60;
 
 
         private void Update()

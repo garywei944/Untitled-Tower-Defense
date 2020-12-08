@@ -1,0 +1,1 @@
+1. 如果enemy spawn速度太快会因为collidor问题不能继续往前走

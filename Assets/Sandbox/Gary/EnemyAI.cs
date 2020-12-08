@@ -55,12 +55,18 @@ namespace Sandbox.Gary
                 _pointIndex++;
                 if (_pointIndex >= PathPoints.pathPoints.Length)
                 {
-                    Destroy(gameObject);
+                    PathEnd();
                     return;
                 }
 
                 _target = PathPoints.pathPoints[_pointIndex];
             }
+        }
+
+        private void PathEnd()
+        {
+            EnemySpawner.EnemyAlive--;
+            Destroy(gameObject);
         }
     }
 }
