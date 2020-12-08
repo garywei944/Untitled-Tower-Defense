@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
 
 
-public class EnemyAIAndControl : MonoBehaviour
+public class Enemy : MonoBehaviour
 {
+    public float HP = 100f;
     public float speed = 10f;
-    public float turnSpeed = 400f;
+    public float turnSpeed = 50f;
     public float gravity = 10f;
     private Vector3 moveDirection = Vector3.zero;
 
@@ -35,21 +36,22 @@ public class EnemyAIAndControl : MonoBehaviour
 
     private void Update()
     {
-
+        if(HP <= 0)
+        {
+            if (thirdPersonView)
+            {
+                OnMouseUpAsButton();
+            }
+            Destroy(gameObject);
+        }
+        
+        
         if (autoMoving)
         {
             AutoMove();
         }
         else
         {
-            //if (controller.isGrounded)
-            //{
-            //    moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
-            //    moveDirection = transform.TransformDirection(moveDirection);
-            //    moveDirection *= speed;
-            //}
-            //moveDirection.y -= gravity * Time.deltaTime;
-            //controller.Move(moveDirection * Time.deltaTime);
             if (Input.GetKey("w") || Input.GetKey(KeyCode.UpArrow))
             {
                 _animator.SetInteger("AnimationPar", 1);
