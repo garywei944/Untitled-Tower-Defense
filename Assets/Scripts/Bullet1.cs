@@ -28,6 +28,6 @@ public class Bullet1 : MonoBehaviour
     {
         Destroy(gameObject);
         Debug.Log("hit");
-        //TODO decrease HP
+        other.gameObject.GetComponent<Enemy>().HP -= 50;
     }
 }

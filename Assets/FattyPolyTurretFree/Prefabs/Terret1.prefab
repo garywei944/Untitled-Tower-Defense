@@ -274,6 +274,7 @@ MonoBehaviour:
   bulletInterval: 0.5
   bulletNum: 3
   shootPoint: {fileID: 4411725851834284}
+  turretPoint: {fileID: 4940591295711036}
   bullet: {fileID: 1627521441993660, guid: 12ea0a574b594264685afffd52fff036, type: 3}
 --- !u!1 &1658705116820196
 GameObject:
