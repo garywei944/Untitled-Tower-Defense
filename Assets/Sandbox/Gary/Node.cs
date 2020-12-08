@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEngine.PlayerLoop;
 using UnityEngine.Serialization;
+using UnityEngine.EventSystems;
 
 namespace Sandbox.Gary
 {
@@ -10,6 +11,7 @@ namespace Sandbox.Gary
         public Vector3 offset = new Vector3(0, 0.5f, 0);
 
         public Color hoverColor = Color.gray;
+        public Color noEnoughMoneyColor = Color.magenta;
         private Color _initColor;
         private Renderer _render;
 
@@ -22,20 +24,48 @@ namespace Sandbox.Gary
 
         private void OnMouseEnter()
         {
-            if (!BuildManager.Instance.SelectedTurret) return;
-            _render.material.color = hoverColor;
+            if (!BuildManager.Instance.CanBuild) return;
+
+            if (BuildManager.Instance.HasEnoughMoney)
+            {
+                _render.material.color = hoverColor;
+            }
+            else
+            {
+                _render.material.color = noEnoughMoneyColor;
+            }
         }
 
         private void OnMouseExit()
         {
-            if (!BuildManager.Instance.SelectedTurret) return;
+            if (!BuildManager.Instance.CanBuild) return;
             _render.material.color = _initColor;
         }
 
         private void OnMouseDown()
         {
-            if (!BuildManager.Instance.SelectedTurret) return;
-            Instantiate(BuildManager.Instance.SelectedTurret, transform.position + offset, Quaternion.identity);
+            if (EventSystem.current.IsPointerOverGameObject()) return;
+            if (!BuildManager.Instance.CanBuild) return;
+            if (BuildManager.Instance.HasEnoughMoney)
+            {
+                BuildTurret();
+                Debug.Log($"Balance: {PlayerStatus.Money}");
+            }
+            else
+            {
+                Debug.Log("No enough Balance");
+            }
+        }
+
+        private void BuildTurret()
+        {
+            PlayerStatus.Money -= BuildManager.Instance.SelectedTurret.cost;
+            Instantiate(BuildManager.Instance.SelectedTurret.prefab, GetPosition(), Quaternion.identity);
+        }
+
+        private Vector3 GetPosition()
+        {
+            return transform.position + offset;
         }
     }
 }

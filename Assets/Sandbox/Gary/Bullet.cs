@@ -7,6 +7,7 @@ namespace Sandbox.Gary
         private Transform _mTarget;
         public float speed = 80f;
         public float damage = 20;
+        public float explosionRadius;
 
         public void SetTarget(Transform target)
         {
@@ -34,16 +35,36 @@ namespace Sandbox.Gary
 
         private void HitTarget()
         {
-            EnemyDamage();
+            if (explosionRadius > 0)
+            {
+                Explosion();
+            }
+            else
+            {
+                EnemyDamage(_mTarget);
+            }
+
             Destroy(gameObject);
         }
 
-        private void EnemyDamage()
+        private void EnemyDamage(Component enemy)
         {
-            var enemyHp = _mTarget.GetComponent<EnemyHealth>();
+            var enemyHp = enemy.GetComponent<EnemyHealth>();
             if (enemyHp)
             {
                 enemyHp.Damage(damage);
+            }
+        }
+
+        private void Explosion()
+        {
+            var colliders = Physics.OverlapSphere(transform.position, explosionRadius);
+            foreach (var item in colliders)
+            {
+                if (item.CompareTag("Enemy"))
+                {
+                    EnemyDamage(item);
+                }
             }
         }
     }

@@ -7,13 +7,16 @@ namespace Sandbox.Gary
     public class BuildManager : MonoBehaviour
     {
         public static BuildManager Instance;
-        public GameObject selectedTurret;
+        public TurretDesign selectedTurret;
 
-        public GameObject SelectedTurret
+        public TurretDesign SelectedTurret
         {
             get => selectedTurret;
             set => selectedTurret = value;
         }
+
+        public bool CanBuild => selectedTurret.prefab != null;
+        public bool HasEnoughMoney => PlayerStatus.Money >= BuildManager.Instance.SelectedTurret.cost;
 
         private void Awake()
         {

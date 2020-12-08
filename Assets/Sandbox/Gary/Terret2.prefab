@@ -5171,6 +5171,6 @@ MonoBehaviour:
   range: 30
   rotSpeed: 6
   bulletRate: 0.5
-  bulletPrefab: {fileID: 4656603490940294640, guid: 82b6c902437dce14d98b5ca383d03a05, type: 3}
+  bulletPrefab: {fileID: 9016501058059125643, guid: f1c1c0f7b434fc74ba9c153812254759, type: 3}
   enemyTag: Enemy
   target: {fileID: 0}

@@ -11,6 +11,7 @@ namespace Sandbox.Gary
 
         private Animator _animator;
         private CharacterController _controller;
+        private Canvas _canvas;
         private static readonly int AnimationPar = Animator.StringToHash("AnimationPar");
 
 
@@ -19,6 +20,7 @@ namespace Sandbox.Gary
             _target = PathPoints.pathPoints[_pointIndex];
             _animator = gameObject.GetComponentInChildren<Animator>();
             _controller = GetComponent<CharacterController>();
+            _canvas = gameObject.GetComponentInChildren<Canvas>();
         }
 
         private void Update()
@@ -46,8 +48,10 @@ namespace Sandbox.Gary
                 transform.rotation = Quaternion.Euler(0, 180, 0);
             }
 
-
             _controller.Move(direction.normalized * (speed * Time.deltaTime));
+
+            // Fix the HP bar rotation
+            _canvas.transform.rotation = Quaternion.Euler(45, 0, 0);
 
             // Reach the current path point
             if (Vector3.Distance(_target.position, transform.position) < err / 2)
