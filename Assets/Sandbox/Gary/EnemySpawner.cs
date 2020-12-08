@@ -46,8 +46,9 @@ namespace Sandbox.Gary
 
             _countDown -= Time.deltaTime;
             _countDown = Mathf.Clamp(_countDown, 0, Mathf.Infinity);
-            var time = $"{_countDown:00.00}";
-            TimerText.text = time;
+            var msg = _countDown > 0 ? $"Next Wave in {_countDown:00.00}s" : $"Wave {PlayerStatus.Rounds + 1}";
+
+            TimerText.text = msg;
             if (_countDown <= 0)
             {
                 _countDown = spawnInterval;
@@ -66,6 +67,8 @@ namespace Sandbox.Gary
             {
                 yield break;
             }
+
+            PlayerStatus.Rounds++;
 
             var wave = waveEnemy[_waveIndex];
             EnemyAlive = wave.count;

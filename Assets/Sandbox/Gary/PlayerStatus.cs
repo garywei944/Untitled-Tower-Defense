@@ -10,6 +10,8 @@ namespace Sandbox.Gary
         [SerializeField] private int startLives = 3;
         public static int Lives;
 
+        public static int Rounds;
+
         private void Start()
         {
             Money = startMoney;
