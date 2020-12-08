@@ -8,12 +8,14 @@ public class EnemyGenerator : MonoBehaviour
     public Transform generatePoint;
 
     public float generateInterval = 5f;
-    public int totalEnemy = 1;
+    public int[] totalEnemy = new int[] { 1, 3, 5, 7 };
+    private int index;
     private float countDown;
     // Start is called before the first frame update
     void Start()
     {
         //countDown = generateInterval;
+        index = 0;
     }
 
     // Update is called once per frame
@@ -29,6 +31,19 @@ public class EnemyGenerator : MonoBehaviour
 
     void GenerateEnemy()
     {
-        Instantiate(enemyPrefab, generatePoint.position, generatePoint.rotation);
+        if (index >= totalEnemy.Length)
+            return;
+        StartCoroutine(GenerateSingleEnemy());
+        Debug.Log("AAA");
+        index++;
+    }
+
+    private IEnumerator GenerateSingleEnemy()
+    {
+        for(int i = 0; i < totalEnemy[index]; i++)
+        {
+            Instantiate(enemyPrefab, generatePoint.position, generatePoint.rotation);
+            yield return new WaitForSeconds(1.0f);
+        }
     }
 }
