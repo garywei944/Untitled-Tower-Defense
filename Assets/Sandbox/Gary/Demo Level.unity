@@ -2395,7 +2395,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 314102130}
   m_LocalRotation: {x: 0.60876137, y: 0, z: 0, w: 0.7933534}
-  m_LocalPosition: {x: -32, y: 72, z: 8}
+  m_LocalPosition: {x: -32, y: 80, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2415,7 +2415,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 50
   scrollSpeed: 1000
-  space: 50
+  space: 20
   minX: -65
   maxX: 0
   minY: 20
@@ -3077,7 +3077,43 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2029480483367514072, guid: 6594b4d45b153044880e7792b12f319f, type: 3}
       propertyPath: m_Name
-      value: TurretIcon (2)
+      value: Laser
+      objectReference: {fileID: 0}
+    - target: {fileID: 3155001741110819007, guid: 6594b4d45b153044880e7792b12f319f, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: e4a941b544a3cc543bff7fc0e75ca020, type: 3}
+    - target: {fileID: 3155001741110819007, guid: 6594b4d45b153044880e7792b12f319f, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3699913386622534763, guid: 6594b4d45b153044880e7792b12f319f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3699913386622534763, guid: 6594b4d45b153044880e7792b12f319f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3699913386622534763, guid: 6594b4d45b153044880e7792b12f319f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3699913386622534763, guid: 6594b4d45b153044880e7792b12f319f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1346468910}
+    - target: {fileID: 3699913386622534763, guid: 6594b4d45b153044880e7792b12f319f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Sandbox.Gary.Shop, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3699913386622534763, guid: 6594b4d45b153044880e7792b12f319f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnPurseLaser
+      objectReference: {fileID: 0}
+    - target: {fileID: 3699913386622534763, guid: 6594b4d45b153044880e7792b12f319f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 4326600464871509437, guid: 6594b4d45b153044880e7792b12f319f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -9785,6 +9821,7 @@ GameObject:
   - component: {fileID: 1346468908}
   - component: {fileID: 1346468907}
   - component: {fileID: 1346468909}
+  - component: {fileID: 1346468910}
   m_Layer: 5
   m_Name: Shop
   m_TagString: Untagged
@@ -9811,8 +9848,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -368.9}
-  m_SizeDelta: {x: 0, y: -737.84814}
+  m_AnchoredPosition: {x: 0, y: -279.4}
+  m_SizeDelta: {x: 0, y: -558.8124}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1346468907
 MonoBehaviour:
@@ -9876,6 +9913,19 @@ MonoBehaviour:
   m_Spacing: {x: 10, y: 0}
   m_Constraint: 2
   m_ConstraintCount: 1
+--- !u!114 &1346468910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1346468905}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c4e6c372f8ed9e438c08afa78a1bfd0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  standardTurret: {fileID: 5718328783362712814, guid: afbbab6355d95dc43acac53fed10da95, type: 3}
 --- !u!1001 &1347636484
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13206,7 +13256,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c16aa841209d960488c0b72853537020, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  turretPrefab: {fileID: 5718328783362712814, guid: afbbab6355d95dc43acac53fed10da95, type: 3}
+  selectedTurret: {fileID: 0}
 --- !u!4 &1844270728
 Transform:
   m_ObjectHideFlags: 0
@@ -14102,7 +14152,43 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2029480483367514072, guid: 6594b4d45b153044880e7792b12f319f, type: 3}
       propertyPath: m_Name
-      value: TurretIcon (1)
+      value: Missile
+      objectReference: {fileID: 0}
+    - target: {fileID: 3155001741110819007, guid: 6594b4d45b153044880e7792b12f319f, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: b850b71feba82904da073c29e05dc311, type: 3}
+    - target: {fileID: 3155001741110819007, guid: 6594b4d45b153044880e7792b12f319f, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3699913386622534763, guid: 6594b4d45b153044880e7792b12f319f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3699913386622534763, guid: 6594b4d45b153044880e7792b12f319f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3699913386622534763, guid: 6594b4d45b153044880e7792b12f319f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3699913386622534763, guid: 6594b4d45b153044880e7792b12f319f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1346468910}
+    - target: {fileID: 3699913386622534763, guid: 6594b4d45b153044880e7792b12f319f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Sandbox.Gary.Shop, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3699913386622534763, guid: 6594b4d45b153044880e7792b12f319f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnPurseMissile
+      objectReference: {fileID: 0}
+    - target: {fileID: 3699913386622534763, guid: 6594b4d45b153044880e7792b12f319f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 4326600464871509437, guid: 6594b4d45b153044880e7792b12f319f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -15756,7 +15842,43 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2029480483367514072, guid: 6594b4d45b153044880e7792b12f319f, type: 3}
       propertyPath: m_Name
-      value: TurretIcon
+      value: Minigun
+      objectReference: {fileID: 0}
+    - target: {fileID: 3155001741110819007, guid: 6594b4d45b153044880e7792b12f319f, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: f8d9994e06fae9f42b375b11565629a7, type: 3}
+    - target: {fileID: 3155001741110819007, guid: 6594b4d45b153044880e7792b12f319f, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3699913386622534763, guid: 6594b4d45b153044880e7792b12f319f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3699913386622534763, guid: 6594b4d45b153044880e7792b12f319f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3699913386622534763, guid: 6594b4d45b153044880e7792b12f319f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3699913386622534763, guid: 6594b4d45b153044880e7792b12f319f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1346468910}
+    - target: {fileID: 3699913386622534763, guid: 6594b4d45b153044880e7792b12f319f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Sandbox.Gary.Shop, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3699913386622534763, guid: 6594b4d45b153044880e7792b12f319f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnPurseMinigun
+      objectReference: {fileID: 0}
+    - target: {fileID: 3699913386622534763, guid: 6594b4d45b153044880e7792b12f319f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 4326600464871509437, guid: 6594b4d45b153044880e7792b12f319f, type: 3}
       propertyPath: m_LocalPosition.x

@@ -1,18 +1,25 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class Shop : MonoBehaviour
+namespace Sandbox.Gary
 {
-    // Start is called before the first frame update
-    void Start()
+    public class Shop : MonoBehaviour
     {
+        public GameObject standardTurret;
         
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        public void OnPurseMinigun()
+        {
+            Debug.Log("Purchase Minigun");
+            BuildManager.Instance.SelectedTurret = standardTurret;
+        }
+        public void OnPurseMissile()
+        {
+            Debug.Log("Purchase Missile");
+            BuildManager.Instance.SelectedTurret = standardTurret;
+        }
+        public void OnPurseLaser()
+        {
+            Debug.Log("Purchase Laser");
+            BuildManager.Instance.SelectedTurret = standardTurret;
+        }
     }
 }

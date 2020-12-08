@@ -7,29 +7,17 @@ namespace Sandbox.Gary
     public class BuildManager : MonoBehaviour
     {
         public static BuildManager Instance;
-        public GameObject turretPrefab;
+        public GameObject selectedTurret;
 
         public GameObject SelectedTurret
         {
-            get => turretPrefab;
-            set => turretPrefab = value;
+            get => selectedTurret;
+            set => selectedTurret = value;
         }
 
         private void Awake()
         {
             Instance = this;
-        }
-
-        // Start is called before the first frame update
-        void Start()
-        {
-        
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-        
         }
     }
 }

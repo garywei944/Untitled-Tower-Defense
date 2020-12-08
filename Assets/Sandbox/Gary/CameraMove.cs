@@ -19,22 +19,22 @@ namespace Sandbox.Gary
         private void Update()
         {
             var pos = transform.position;
-            if (Input.GetKey(KeyCode.A) || Input.mousePosition.x < space)
+            if (Input.GetKey(KeyCode.A) || IsInScreen() && Input.mousePosition.x < space)
             {
                 pos += Vector3.left * (moveSpeed * Time.deltaTime);
             }
 
-            if (Input.GetKey(KeyCode.D) || Input.mousePosition.x > Screen.width - space)
+            if (Input.GetKey(KeyCode.D) || IsInScreen() && Input.mousePosition.x > Screen.width - space)
             {
                 pos += Vector3.right * (moveSpeed * Time.deltaTime);
             }
 
-            if (Input.GetKey(KeyCode.W) || Input.mousePosition.y > Screen.height - space)
+            if (Input.GetKey(KeyCode.W) || IsInScreen() && Input.mousePosition.y > Screen.height - space)
             {
                 pos += Vector3.forward * (moveSpeed * Time.deltaTime);
             }
 
-            if (Input.GetKey(KeyCode.S) || Input.mousePosition.y < space)
+            if (Input.GetKey(KeyCode.S) || IsInScreen() && Input.mousePosition.y < space)
             {
                 pos += Vector3.back * (moveSpeed * Time.deltaTime);
             }
@@ -50,6 +50,12 @@ namespace Sandbox.Gary
             pos.y = Mathf.Clamp(pos.y, minY, maxY);
             pos.z = Mathf.Clamp(pos.z, minZ, maxZ);
             transform.position = pos;
+        }
+
+        private static bool IsInScreen()
+        {
+            return Input.mousePosition.x >= 0 && Input.mousePosition.x <= Screen.width && Input.mousePosition.y >= 0 &&
+                   Input.mousePosition.y <= Screen.height;
         }
     }
 }

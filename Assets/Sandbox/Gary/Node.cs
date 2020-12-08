@@ -22,16 +22,19 @@ namespace Sandbox.Gary
 
         private void OnMouseEnter()
         {
+            if (!BuildManager.Instance.SelectedTurret) return;
             _render.material.color = hoverColor;
         }
 
         private void OnMouseExit()
         {
+            if (!BuildManager.Instance.SelectedTurret) return;
             _render.material.color = _initColor;
         }
 
         private void OnMouseDown()
         {
+            if (!BuildManager.Instance.SelectedTurret) return;
             Instantiate(BuildManager.Instance.SelectedTurret, transform.position + offset, Quaternion.identity);
         }
     }
