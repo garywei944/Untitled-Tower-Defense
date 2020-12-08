@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Sandbox.Gary
 {
@@ -9,11 +10,12 @@ namespace Sandbox.Gary
 
         public Wave[] waveEnemy;
         public float spawnInterval = 5.0f;
+        public Text TimerText;
 
         private Transform _spawnPoint;
+
         private float _countDown;
         private int _waveIndex;
-
 
         // Start is called before the first frame update
         private void Start()
@@ -37,6 +39,9 @@ namespace Sandbox.Gary
             }
 
             _countDown -= Time.deltaTime;
+            _countDown = Mathf.Clamp(_countDown, 0, Mathf.Infinity);
+            var time = $"{_countDown:00.00}";
+            TimerText.text = time;
             if (_countDown <= 0)
             {
                 _countDown = spawnInterval;
