@@ -53,7 +53,6 @@ public class TurretGenerator : MonoBehaviour
 
     private void Generate(int x, int y, int type)
     {
-        //TODO generate a new turret
         Vector3 pos = WorldCoor(x, y);
         Vector3 rotation = NearestPathNode(x, y);
         Instantiate(turretPrefabs[type], pos, Quaternion.LookRotation(rotation));

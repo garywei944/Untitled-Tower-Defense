@@ -84,7 +84,6 @@ public class Turret2 : MonoBehaviour
         //_enemyMove.Slow(slowPct);
 
         // Draw the laser line
-        //TODO laser
         var bulletPosition = _bulletPoint.position;
         var targetPosition = target.position;
         targetPosition.y += 1;
