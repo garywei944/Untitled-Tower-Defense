@@ -46,7 +46,6 @@ public class FinalZone : MonoBehaviour
     {
         if(reachNumber >= winCondition)
         {
-            //TODO win
             Debug.Log("win");
             winPanel.SetActive(true);
         }

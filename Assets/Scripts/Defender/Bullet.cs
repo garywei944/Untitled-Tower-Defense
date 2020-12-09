@@ -41,18 +41,18 @@ namespace Sandbox.Gary
             }
             else
             {
-                EnemyDamage(_mTarget);
+                EnemyDamage(_mTarget, EnemyHealth.DamageType.Bullet);
             }
 
             Destroy(gameObject);
         }
 
-        private void EnemyDamage(Component enemy)
+        private void EnemyDamage(Component enemy, EnemyHealth.DamageType type)
         {
             var enemyHp = enemy.GetComponent<EnemyHealth>();
             if (enemyHp)
             {
-                enemyHp.Damage(damage);
+                enemyHp.Damage(damage, type);
             }
         }
 
@@ -63,7 +63,7 @@ namespace Sandbox.Gary
             {
                 if (item.CompareTag("Enemy"))
                 {
-                    EnemyDamage(item);
+                    EnemyDamage(item, EnemyHealth.DamageType.Missile);
                 }
             }
         }

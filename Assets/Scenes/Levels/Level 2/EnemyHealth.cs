@@ -18,7 +18,6 @@ public class EnemyHealth : MonoBehaviour
 
     public void Damage(float amount)
     { 
-        //TODO 
         _currentHealth -= amount;
         hpBar.fillAmount = _currentHealth / initHealth;
         if (_currentHealth <= 0)

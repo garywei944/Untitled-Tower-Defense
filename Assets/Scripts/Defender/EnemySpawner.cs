@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -40,8 +41,8 @@ namespace Sandbox.Gary
 
             if (_waveIndex == waveEnemy.Length)
             {
-                // TODO: Victory
-                Debug.Log("Victory");
+                GameManager.Instance.GameWin();
+                enabled = false;
             }
 
             _countDown -= Time.deltaTime;

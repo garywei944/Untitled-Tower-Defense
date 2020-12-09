@@ -14,6 +14,8 @@ namespace Sandbox.Gary
         private CharacterController _controller;
         private Canvas _canvas;
         private static readonly int AnimationPar = Animator.StringToHash("AnimationPar");
+        private AudioSource _audioSource;
+        public AudioClip enterClip;
 
 
         private void Start()
@@ -23,6 +25,7 @@ namespace Sandbox.Gary
             _controller = GetComponent<CharacterController>();
             _canvas = gameObject.GetComponentInChildren<Canvas>();
             _moveSpeed = startSpeed;
+            _audioSource = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<AudioSource>();
         }
 
         private void Update()
@@ -84,6 +87,7 @@ namespace Sandbox.Gary
             }
 
             EnemySpawner.EnemyAlive--;
+            _audioSource.PlayOneShot(enterClip);
             Destroy(gameObject);
         }
 
