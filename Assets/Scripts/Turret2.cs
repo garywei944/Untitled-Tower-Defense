@@ -78,7 +78,7 @@ public class Turret2 : MonoBehaviour
         }
 
         // Damage enemy
-        _enemyHp.Damage(overTimeDmg * Time.deltaTime);
+        _enemyHp.Damage(overTimeDmg * Time.deltaTime, EnemyHealth.DamageType.Laser);
 
         // Slow Enemy
         //_enemyMove.Slow(slowPct);
