@@ -43,6 +43,7 @@ public class FinalZone : MonoBehaviour
 
     void LoadNextPage()
     {
+        Debug.Log("click");
         SceneManager.LoadScene("WinPage", LoadSceneMode.Single);
     }
 

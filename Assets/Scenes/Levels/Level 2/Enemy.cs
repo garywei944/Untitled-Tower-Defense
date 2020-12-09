@@ -3,7 +3,6 @@
 
 public class Enemy : MonoBehaviour
 {
-    public float HP = 100f;
     public float speed = 10f;
     public float turnSpeed = 50f;
     public float gravity = 10f;
@@ -40,15 +39,6 @@ public class Enemy : MonoBehaviour
 
     private void Update()
     {
-        if(HP <= 0)
-        {
-            if (thirdPersonView)
-            {
-                OnMouseUpAsButton();
-            }
-            Destroy(gameObject);
-        }
-        
         
         if (autoMoving)
         {
@@ -92,12 +82,18 @@ public class Enemy : MonoBehaviour
 
         if(Vector3.Distance(transform.position, new Vector3(0, 0, 0)) < err / 2)
         {
-            Destroy(gameObject);
             Debug.Log("reach end");
-            OnMouseUpAsButton();
+            Die();
             finalZone.GetComponent<FinalZone>().reachNumber += 1;
             return;
         }
+    }
+
+    public void Die()
+    {
+        mainCamera.SetActive(true);
+        enemyCamera.SetActive(false);
+        Destroy(gameObject);
     }
 
     private void OnMouseUpAsButton()
