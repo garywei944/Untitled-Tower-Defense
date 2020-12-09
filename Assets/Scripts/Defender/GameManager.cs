@@ -7,6 +7,7 @@ namespace Sandbox.Gary
     {
         public GameObject gameOverUI;
         public GameObject winLevelUI;
+        public PauseUI pauseUI;
         public static bool IsOver;
         private static GameManager _instance;
 
@@ -25,6 +26,11 @@ namespace Sandbox.Gary
             {
                 GameEnd();
             }
+
+            if (Input.GetKeyDown(KeyCode.P))
+            {
+                pauseUI.SwitchUI();
+            }
         }
 
         private void GameEnd()
@@ -37,6 +43,14 @@ namespace Sandbox.Gary
         {
             IsOver = true;
             winLevelUI.SetActive(true);
+        }
+
+        public void ResetGame()
+        {
+            IsOver = false;
+            PlayerStatus.Money = PlayerStatus.startMoney;
+            PlayerStatus.Lives = PlayerStatus.startLives;
+            PlayerStatus.Rounds = 0;
         }
     }
 }

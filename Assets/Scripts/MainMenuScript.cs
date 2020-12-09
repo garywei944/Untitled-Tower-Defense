@@ -83,7 +83,7 @@ public class MainMenuScript : MonoBehaviour
         string levelName = "Level";
         levelName = levelName + level;
         Debug.Log(levelName);
-        //SceneManager.LoadScene(levelName, LoadSceneMode.Single);
+        SceneManager.LoadScene(levelName, LoadSceneMode.Single);
     }
 
     void ChooseLevel()
@@ -94,7 +94,7 @@ public class MainMenuScript : MonoBehaviour
 
     void QuitGame()
     {
-        //Application.Quit();
+        Application.Quit();
         UnityEditor.EditorApplication.isPlaying = false;
     }
 }
