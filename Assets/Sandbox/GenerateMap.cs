@@ -9,11 +9,14 @@ public class GenerateMap : MonoBehaviour
     public Transform environment;
 
     private int[,] map;
+    private List<int> path;
+    public Transform[] pathPoints;
 
     // Start is called before the first frame update
     void Start()
     {
         map = new int[16,16];
+        pathPoints = new Transform[1];
         getRandomMap();
         GenerateNode();
         GeneratePoint();
@@ -27,14 +30,17 @@ public class GenerateMap : MonoBehaviour
 
     private void GeneratePoint()
     {
-        for (int i = 0; i < 16; i++)
+        pathPoints = new Transform[path.Count + 1];
+        GameObject newPathPoint;
+        for (int i = 0; i < path.Count; i++)
         {
-            for (int j = 0; j < 16; j++)
-            {
-                if (map[i, j] == 0)
-                    Instantiate(pointPrefab, new Vector3(-70 + i * 5 + 2, 0, 70 - j * 5 - 2), environment.rotation);
-            }
+            int x = path[i] / 16;
+            int y = path[i] % 16;
+            newPathPoint = Instantiate(pointPrefab, new Vector3(-70 + x * 5 + 2, 0, 70 - y * 5 - 2), environment.rotation);
+            pathPoints[i] = newPathPoint.GetComponentInChildren<Transform>();
         }
+        newPathPoint = Instantiate(pointPrefab, new Vector3(-70 + 14 * 5 + 2, 0, 70 - 14 * 5 - 2), environment.rotation);
+        pathPoints[path.Count] = newPathPoint.GetComponentInChildren<Transform>(); ;
     }
 
     private void GenerateNode()
@@ -79,7 +85,7 @@ public class GenerateMap : MonoBehaviour
         int[,] temp = FindPath();
         List<int> res = new List<int>();
         GeneratePath(temp, 17, 254, res);
-
+        path = res;
         for (int i = 0; i < 16; i++)
         {
             for (int j = 0; j < 16; j++)
