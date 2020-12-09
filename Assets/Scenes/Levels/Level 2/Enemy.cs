@@ -84,7 +84,10 @@ public class Enemy : MonoBehaviour
         if(Vector3.Distance(transform.position, new Vector3(0, 0, 0)) < err / 2)
         {
             Debug.Log("reach end");
-            Die();
+            //TODO reach end zone
+            mainCamera.SetActive(true);
+            enemyCamera.SetActive(false);
+            Destroy(gameObject);
             finalZone.GetComponent<FinalZone>().reachNumber += 1;
             return;
         }
@@ -92,6 +95,7 @@ public class Enemy : MonoBehaviour
 
     public void Die()
     {
+        //TODO die
         mainCamera.SetActive(true);
         enemyCamera.SetActive(false);
         Destroy(gameObject);
