@@ -23,6 +23,7 @@ public class Enemy : MonoBehaviour
     private bool thirdPersonView;
 
     public GameObject finalZone;
+    public GameObject enemyGenerator;
 
 
     private void Start()
@@ -35,6 +36,7 @@ public class Enemy : MonoBehaviour
         enemyCamera.SetActive(false);
         mainCamera = GameObject.Find("MainCamera");
         finalZone = GameObject.Find("Final");
+        enemyGenerator = GameObject.Find("EnemyGenerator");
     }
 
     private void Update()
@@ -99,6 +101,7 @@ public class Enemy : MonoBehaviour
         mainCamera.SetActive(true);
         enemyCamera.SetActive(false);
         Destroy(gameObject);
+        enemyGenerator.GetComponent<EnemyGenerator>().DecreaseEnemy();
     }
 
     private void OnMouseUpAsButton()

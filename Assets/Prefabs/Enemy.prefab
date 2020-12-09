@@ -792,7 +792,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 556635f93a48918429083e093283988f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 20
+  speed: 5
   turnSpeed: 400
   gravity: 10
   enemyCamera: {fileID: 2588143131595255223}

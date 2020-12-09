@@ -11,8 +11,14 @@ public class FinalZone : MonoBehaviour
     public GameObject winPanel;
     public Button nextButton;
 
+    public GameObject lossPanel;
+    public Button retryButton;
+    public Button quitButton;
+
     public int reachNumber;
     public int winCondition = 5;
+
+    private bool loss;
 
     private void Awake()
     {
@@ -20,8 +26,12 @@ public class FinalZone : MonoBehaviour
         reachNumber = 0;
 
         winPanel.SetActive(false);
+        lossPanel.SetActive(false);
+        loss = false;
 
         nextButton.onClick.AddListener(LoadNextPage);
+        retryButton.onClick.AddListener(ReloadPage);
+        quitButton.onClick.AddListener(GoToMainMenu);
     }
 
     public FinalZone GetInstance()
@@ -40,12 +50,33 @@ public class FinalZone : MonoBehaviour
             Debug.Log("win");
             winPanel.SetActive(true);
         }
+
+        if (loss)
+        {
+            Debug.Log("loss");
+            lossPanel.SetActive(true);
+        }
+    }
+
+    public void Loss()
+    {
+        loss = true;
     }
 
     void LoadNextPage()
     {
         Debug.Log("click");
         SceneManager.LoadScene("WinPage", LoadSceneMode.Single);
+    }
+
+    void ReloadPage()
+    {
+        SceneManager.LoadScene("Level2", LoadSceneMode.Single);
+    }
+
+    void GoToMainMenu()
+    {
+        SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
     }
 
     public void AddReachNum()
