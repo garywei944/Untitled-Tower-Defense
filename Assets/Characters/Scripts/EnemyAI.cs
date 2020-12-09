@@ -10,7 +10,7 @@ namespace Sandbox.Gary
         private Transform _target;
         private int _pointIndex;
 
-        public Animator _animator;
+        private Animator _animator;
         private CharacterController _controller;
         private Canvas _canvas;
         private static readonly int AnimationPar = Animator.StringToHash("AnimationPar");

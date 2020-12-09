@@ -4890,7 +4890,7 @@ GameObject:
   - component: {fileID: 5714871873068201460}
   - component: {fileID: 2717711279932868221}
   m_Layer: 0
-  m_Name: StandardTerret
+  m_Name: Minigun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4925,12 +4925,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08903ba3b88fc284093da28b106ef667, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range: 50
+  range: 15
   rotSpeed: 10
-  bulletRate: 2
-  bulletPrefab: {fileID: 4656603490940294640, guid: 82b6c902437dce14d98b5ca383d03a05, type: 3}
-  enemyTag: Enemy
   target: {fileID: 0}
+  bulletPrefab: {fileID: 4656603490940294640, guid: 82b6c902437dce14d98b5ca383d03a05, type: 3}
+  bulletRate: 2
+  useLaser: 0
+  lineRender: {fileID: 0}
+  overTimeDmg: 30
+  slowPct: 0.3
+  impactEffect: {fileID: 0}
+  pointLight: {fileID: 0}
 --- !u!1 &5718373933633741050
 GameObject:
   m_ObjectHideFlags: 0

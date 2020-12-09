@@ -5133,7 +5133,7 @@ GameObject:
   - component: {fileID: 8910391338873858715}
   - component: {fileID: 4783919013269223523}
   m_Layer: 0
-  m_Name: Terret2
+  m_Name: Missile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5168,9 +5168,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08903ba3b88fc284093da28b106ef667, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range: 30
+  range: 20
   rotSpeed: 6
-  bulletRate: 0.5
-  bulletPrefab: {fileID: 9016501058059125643, guid: f1c1c0f7b434fc74ba9c153812254759, type: 3}
-  enemyTag: Enemy
   target: {fileID: 0}
+  bulletPrefab: {fileID: 9016501058059125643, guid: f1c1c0f7b434fc74ba9c153812254759, type: 3}
+  bulletRate: 0.8
+  useLaser: 0
+  lineRender: {fileID: 0}
+  overTimeDmg: 30
+  slowPct: 0.3
+  impactEffect: {fileID: 0}
+  pointLight: {fileID: 0}

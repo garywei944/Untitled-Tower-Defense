@@ -5137,11 +5137,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08903ba3b88fc284093da28b106ef667, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range: 50
+  range: 30
   rotSpeed: 6
   target: {fileID: 0}
   bulletPrefab: {fileID: 4861835949774468311, guid: 14919e088a459ef42b5b80255d87d49f, type: 3}
-  bulletRate: 0.5
+  bulletRate: 1
   useLaser: 0
   lineRender: {fileID: 0}
   overTimeDmg: 30

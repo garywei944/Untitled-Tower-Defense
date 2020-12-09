@@ -4927,7 +4927,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08903ba3b88fc284093da28b106ef667, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range: 30
+  range: 15
   rotSpeed: 100
   target: {fileID: 0}
   bulletPrefab: {fileID: 4656603490940294640, guid: 82b6c902437dce14d98b5ca383d03a05, type: 3}
