@@ -13,19 +13,15 @@ public class GenerateMap : MonoBehaviour
     public Transform[] pathPoints;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        map = new int[16,16];
+        map = new int[16, 16];
         pathPoints = new Transform[1];
         getRandomMap();
         GenerateNode();
         GeneratePoint();
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        Sandbox.Gary.PathPoints.pathPoints = pathPoints;
     }
 
     private void GeneratePoint()
@@ -36,20 +32,24 @@ public class GenerateMap : MonoBehaviour
         {
             int x = path[i] / 16;
             int y = path[i] % 16;
-            newPathPoint = Instantiate(pointPrefab, new Vector3(-70 + x * 5 + 2, 0, 70 - y * 5 - 2), environment.rotation);
+            newPathPoint = Instantiate(pointPrefab, new Vector3(-70 + x * 5 + 2, 0, 70 - y * 5 - 2),
+                environment.rotation);
             pathPoints[i] = newPathPoint.GetComponentInChildren<Transform>();
         }
-        newPathPoint = Instantiate(pointPrefab, new Vector3(-70 + 14 * 5 + 2, 0, 70 - 14 * 5 - 2), environment.rotation);
-        pathPoints[path.Count] = newPathPoint.GetComponentInChildren<Transform>(); ;
+
+        newPathPoint = Instantiate(pointPrefab, new Vector3(-70 + 14 * 5 + 2, 0, 70 - 14 * 5 - 2),
+            environment.rotation);
+        pathPoints[path.Count] = newPathPoint.GetComponentInChildren<Transform>();
+        ;
     }
 
     private void GenerateNode()
     {
-        for(int i = 0; i < 16; i++)
+        for (int i = 0; i < 16; i++)
         {
-            for(int j = 0; j < 16; j++)
+            for (int j = 0; j < 16; j++)
             {
-                if(map[i,j] == 1)
+                if (map[i, j] == 1)
                     Instantiate(nodePrefab, new Vector3(-70 + i * 5 + 2, 0, 70 - j * 5 - 2), environment.rotation);
             }
         }
@@ -61,11 +61,12 @@ public class GenerateMap : MonoBehaviour
         {
             for (int j = 0; j < 16; j++)
             {
-                map[i,j] = 1;
+                map[i, j] = 1;
             }
         }
-        map[1,1] = 0;
-        map[14,14] = 0;
+
+        map[1, 1] = 0;
+        map[14, 14] = 0;
         System.Random r = new System.Random();
         for (int i = 1; i <= 14; i++)
         {
@@ -75,9 +76,10 @@ public class GenerateMap : MonoBehaviour
                 {
                     continue;
                 }
+
                 if (r.NextDouble() < 0.5f)
                 {
-                    map[i,j] = 0;
+                    map[i, j] = 0;
                 }
             }
         }
@@ -90,11 +92,12 @@ public class GenerateMap : MonoBehaviour
         {
             for (int j = 0; j < 16; j++)
             {
-                map[i,j] = 1;
+                map[i, j] = 1;
             }
         }
-        map[1,1] = 0;
-        map[14,14] = 0;
+
+        map[1, 1] = 0;
+        map[14, 14] = 0;
 
         for (int i = 0; i < res.Count; i++)
         {
@@ -104,7 +107,7 @@ public class GenerateMap : MonoBehaviour
 
     private void GeneratePath(int[,] path, int start, int end, List<int> p)
     {
-        int k = path[start,end];
+        int k = path[start, end];
         if (k == -1)
             return;
         GeneratePath(path, start, k, p);
@@ -117,18 +120,19 @@ public class GenerateMap : MonoBehaviour
         int N = 16 * 16;
 
         //build graph
-        int[,] graph = new int[N,N];
-        int[,] path = new int[N,N];
+        int[,] graph = new int[N, N];
+        int[,] path = new int[N, N];
         for (int i = 0; i < N; i++)
         {
             for (int j = 0; j < N; j++)
             {
-                graph[i,j] = 999; //not reachable
-                path[i,j] = -1;
+                graph[i, j] = 999; //not reachable
+                path[i, j] = -1;
             }
         }
-        int[] dx = new int[] { -1, 0, 1, 0 };
-        int[] dy = new int[] { 0, -1, 0, 1 };
+
+        int[] dx = new int[] {-1, 0, 1, 0};
+        int[] dy = new int[] {0, -1, 0, 1};
 
         for (int w = 0; w < 16; w++)
         {
@@ -138,16 +142,16 @@ public class GenerateMap : MonoBehaviour
                 {
                     int x = w + dx[i];
                     int y = l + dy[i];
-                    graph[16 * w + l,16 * w + l] = 0;
+                    graph[16 * w + l, 16 * w + l] = 0;
                     if (IsValidPosition(x, y))
                     {
-                        if (map[x,y] == 1)
+                        if (map[x, y] == 1)
                         {
-                            graph[16 * w + l,16 * x + y] = 1;
+                            graph[16 * w + l, 16 * x + y] = 1;
                         }
                         else
                         {
-                            graph[16 * w + l,16 * x + y] = 0;
+                            graph[16 * w + l, 16 * x + y] = 0;
                         }
                     }
                 }
@@ -159,14 +163,14 @@ public class GenerateMap : MonoBehaviour
         {
             for (int i = 0; i < N; i++)
             {
-                if (graph[i,k] == 999)
+                if (graph[i, k] == 999)
                     continue;
                 for (int j = 0; j < N; j++)
                 {
-                    if (graph[k,j] != 99 && graph[i,j] > graph[i,k] + graph[k,j])
+                    if (graph[k, j] != 99 && graph[i, j] > graph[i, k] + graph[k, j])
                     {
-                        graph[i,j] = graph[i,k] + graph[k,j];
-                        path[i,j] = k;
+                        graph[i, j] = graph[i, k] + graph[k, j];
+                        path[i, j] = k;
                     }
                 }
             }
