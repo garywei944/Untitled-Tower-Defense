@@ -40,7 +40,7 @@ public class Terret1 : MonoBehaviour
         for(int i = 0; i < bulletNum; i++)
         {
             GameObject newBullet = Instantiate(bullet, shootPoint.position, shootPoint.rotation);
-            Vector3 shootDirection = shootPoint.position - turretPoint.position;
+            Vector3 shootDirection = shootPoint.position - turretPoint.position; //TODO: shoot a bullet
             shootDirection.y = 0.0f;
             shootDirection.Normalize();
             newBullet.GetComponent<Bullet1>().direction = shootDirection;

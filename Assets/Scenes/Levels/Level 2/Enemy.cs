@@ -49,10 +49,11 @@ public class Enemy : MonoBehaviour
             if (Input.GetKey("w") || Input.GetKey(KeyCode.UpArrow))
             {
                 _animator.SetInteger("AnimationPar", 1);
+                //TODO moving
             }
             else
             {
-                _animator.SetInteger("AnimationPar", 0);
+                _animator.SetInteger("AnimationPar", 0); //not moving!!!
             }
             moveDirection = transform.forward * Input.GetAxis("Vertical") * speed;
 
@@ -106,6 +107,7 @@ public class Enemy : MonoBehaviour
 
     private void AutoMove()
     {
+       //TODO moving
         _animator.SetInteger(AnimationPar, 1);
 
         // Update move

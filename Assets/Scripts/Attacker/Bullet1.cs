@@ -27,7 +27,7 @@ public class Bullet1 : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Destroy(gameObject);
-        Debug.Log("hit");
+        Debug.Log("hit"); //TODO: hit enemy
         other.gameObject.GetComponent<EnemyHealth>().Damage(20);
     }
 }
