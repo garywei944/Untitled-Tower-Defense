@@ -75,7 +75,7 @@ public class LevelMap : MonoBehaviour
         map[6, 12] = 0;
         for (int i = 6; i <= 11; i++)
         {
-            map[11, i] = 0;
+            map[i, 11] = 0;
         }
         map[11, 10] = 0;
         map[12, 10] = 0;

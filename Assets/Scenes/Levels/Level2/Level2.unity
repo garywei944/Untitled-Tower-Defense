@@ -2536,7 +2536,7 @@ MonoBehaviour:
   turretPrefabs:
   - {fileID: 1591110490357510, guid: d4af3966dba2cd746ab019083640eb8c, type: 3}
   - {fileID: 1875090778556656, guid: 7191a0df8b6695d449a0f18a361bc311, type: 3}
-  generateInterval: 10
+  generateInterval: 0.2
 --- !u!4 &335293587
 Transform:
   m_ObjectHideFlags: 0
@@ -9033,7 +9033,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1102048335}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.72, y: 0.5, z: 0.26}
+  m_LocalPosition: {x: -0.52, y: 0.5, z: 0.26}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 141062919}
@@ -15438,19 +15438,20 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!65 &1911800535
-BoxCollider:
+--- !u!114 &1911800535
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1911800534}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85e3add387f68a04b8788e03270020ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  reachNumber: 0
+  winCondition: 5
 --- !u!23 &1911800536
 MeshRenderer:
   m_ObjectHideFlags: 0
