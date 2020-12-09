@@ -3953,7 +3953,7 @@ PrefabInstance:
     - target: {fileID: 3155001741110819007, guid: 6594b4d45b153044880e7792b12f319f, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: e4a941b544a3cc543bff7fc0e75ca020, type: 3}
+      objectReference: {fileID: 21300000, guid: b3497f0b63f55254284d1ccfc0795b14, type: 3}
     - target: {fileID: 3155001741110819007, guid: 6594b4d45b153044880e7792b12f319f, type: 3}
       propertyPath: m_Type
       value: 0
@@ -4069,6 +4069,10 @@ PrefabInstance:
     - target: {fileID: 4326600464871509437, guid: 6594b4d45b153044880e7792b12f319f, type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993768572506767204, guid: 6594b4d45b153044880e7792b12f319f, type: 3}
+      propertyPath: m_Text
+      value: Laser
       objectReference: {fileID: 0}
     - target: {fileID: 9108344099124011715, guid: 6594b4d45b153044880e7792b12f319f, type: 3}
       propertyPath: m_Text
@@ -18257,7 +18261,7 @@ PrefabInstance:
     - target: {fileID: 3155001741110819007, guid: 6594b4d45b153044880e7792b12f319f, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: b850b71feba82904da073c29e05dc311, type: 3}
+      objectReference: {fileID: 21300000, guid: 77988e8e8e7b9444ab958c457a39a607, type: 3}
     - target: {fileID: 3155001741110819007, guid: 6594b4d45b153044880e7792b12f319f, type: 3}
       propertyPath: m_Type
       value: 0
@@ -18373,6 +18377,10 @@ PrefabInstance:
     - target: {fileID: 4326600464871509437, guid: 6594b4d45b153044880e7792b12f319f, type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993768572506767204, guid: 6594b4d45b153044880e7792b12f319f, type: 3}
+      propertyPath: m_Text
+      value: Missile
       objectReference: {fileID: 0}
     - target: {fileID: 9108344099124011715, guid: 6594b4d45b153044880e7792b12f319f, type: 3}
       propertyPath: m_Text
@@ -20096,7 +20104,7 @@ PrefabInstance:
     - target: {fileID: 3155001741110819007, guid: 6594b4d45b153044880e7792b12f319f, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: f8d9994e06fae9f42b375b11565629a7, type: 3}
+      objectReference: {fileID: 21300000, guid: 88ba731f640f4c444b1e5eb95552d1d7, type: 3}
     - target: {fileID: 3155001741110819007, guid: 6594b4d45b153044880e7792b12f319f, type: 3}
       propertyPath: m_Type
       value: 0
@@ -20212,6 +20220,10 @@ PrefabInstance:
     - target: {fileID: 4326600464871509437, guid: 6594b4d45b153044880e7792b12f319f, type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993768572506767204, guid: 6594b4d45b153044880e7792b12f319f, type: 3}
+      propertyPath: m_Text
+      value: Minigun
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6594b4d45b153044880e7792b12f319f, type: 3}
