@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Sandbox.Gary
 {
@@ -7,22 +8,11 @@ namespace Sandbox.Gary
     {
         public CanvasGroup canvasGroup;
         public GameObject ui;
+        public Text costText;
+        public Text sellText;
+        public Button upgradeBtn;
 
         private Node _target;
-
-        // Update is called once per frame
-        private void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.A))
-            {
-                ShowUI();
-            }
-
-            if (Input.GetKeyDown(KeyCode.B))
-            {
-                HideUI();
-            }
-        }
 
         public void ShowUI()
         {
@@ -60,7 +50,33 @@ namespace Sandbox.Gary
         public void SetTarget(Node target)
         {
             _target = target;
-            transform.position = _target.GetUIPosition();
+            transform.position = target.GetUIPosition();
+
+            // Disable Upgrade if upgraded
+            if (target.isUpgraded)
+            {
+                costText.text = "- Complete -";
+                upgradeBtn.interactable = false;
+            }
+            else
+            {
+                costText.text = $"${target.selectedTurretDesign.upgradeCost}";
+                upgradeBtn.interactable = true;
+            }
+
+            sellText.text = $"${target.selectedTurretDesign.SellPrice}";
+        }
+
+        public void UpgradeBtnClicked()
+        {
+            _target.UpgradeTurret();
+            BuildManager.Instance.Unselect();
+        }
+
+        public void SellBtnClicked()
+        {
+            _target.SellTurret();
+            BuildManager.Instance.Unselect();
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Sandbox.Gary
 {
@@ -6,6 +7,11 @@ namespace Sandbox.Gary
     {
         public GameObject gameOverUI;
         public static bool IsOver;
+
+        private void Awake()
+        {
+            IsOver = false;
+        }
 
         private void Update()
         {
@@ -20,12 +26,6 @@ namespace Sandbox.Gary
         {
             IsOver = true;
             gameOverUI.SetActive(true);
-        }
-
-        public static void ResetGame()
-        {
-            IsOver = false;
-            PlayerStatus.Rounds = 0;
         }
     }
 }

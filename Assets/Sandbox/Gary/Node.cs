@@ -12,7 +12,9 @@ namespace Sandbox.Gary
         public Color noEnoughMoneyColor = Color.magenta;
         public Vector3 offset = new Vector3(0, 0.5f, 0);
         public Vector3 uiOffset = new Vector3(0, 5f, 5f);
+        public bool isUpgraded;
 
+        [HideInInspector] public TurretDesign selectedTurretDesign;
         private Color _initColor;
         private Renderer _render;
         private GameObject _turret;
@@ -80,6 +82,7 @@ namespace Sandbox.Gary
         {
             PlayerStatus.Money -= BuildManager.Instance.SelectedTurret.cost;
             _turret = Instantiate(BuildManager.Instance.SelectedTurret.prefab, GetPosition(), Quaternion.identity);
+            selectedTurretDesign = BuildManager.Instance.SelectedTurret;
         }
 
         private Vector3 GetPosition()
@@ -90,6 +93,31 @@ namespace Sandbox.Gary
         public Vector3 GetUIPosition()
         {
             return transform.position + uiOffset;
+        }
+
+        public void UpgradeTurret()
+        {
+            // Return if no enough money
+            if (PlayerStatus.Money < selectedTurretDesign.upgradeCost)
+            {
+                Debug.Log("No enough money to upgrade");
+                return;
+            }
+
+            isUpgraded = true;
+
+            PlayerStatus.Money -= selectedTurretDesign.upgradeCost;
+
+            Destroy(_turret);
+            _turret = Instantiate(selectedTurretDesign.upgradedPrefab, GetPosition(), Quaternion.identity);
+        }
+
+        public void SellTurret()
+        {
+            PlayerStatus.Money += selectedTurretDesign.SellPrice;
+            Destroy(_turret);
+            selectedTurretDesign = null;
+            isUpgraded = false;
         }
     }
 }

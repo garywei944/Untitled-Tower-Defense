@@ -8,5 +8,8 @@ namespace Sandbox.Gary
     {
         public GameObject prefab;
         public int cost;
+        public int upgradeCost;
+        public int SellPrice => cost / 2;
+        public GameObject upgradedPrefab;
     }
 }

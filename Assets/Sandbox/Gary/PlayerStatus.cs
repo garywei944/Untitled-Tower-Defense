@@ -12,10 +12,11 @@ namespace Sandbox.Gary
 
         public static int Rounds;
 
-        private void Start()
+        private void Awake()
         {
             Money = startMoney;
             Lives = startLives;
+            Rounds = 0;
         }
     }
 }

@@ -139,10 +139,10 @@ RectTransform:
   m_Father: {fileID: 4506461955675878888}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 109.75775, y: -23.959213}
-  m_SizeDelta: {x: 71.8385, y: 47.918427}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6974021952903678123
 CanvasRenderer:
@@ -224,7 +224,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3101147516595010497}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7780220578827229713}
+        m_TargetAssemblyTypeName: Sandbox.Gary.NodeUI, Assembly-CSharp
+        m_MethodName: SellBtnClicked
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &195990050537490276
 GameObject:
   m_ObjectHideFlags: 0
@@ -425,6 +437,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvasGroup: {fileID: 8849024475562139677}
   ui: {fileID: 3054751938063701162}
+  costText: {fileID: 6766025278764073210}
+  sellText: {fileID: 1791745857944324281}
+  upgradeBtn: {fileID: 8021828234124180965}
 --- !u!1 &3054751938063701162
 GameObject:
   m_ObjectHideFlags: 0
@@ -453,7 +468,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3054751938063701162}
   m_LocalRotation: {x: 0.53729963, y: 0, z: 0, w: 0.8433915}
-  m_LocalPosition: {x: 0, y: 0, z: 3.227}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children:
   - {fileID: 4506461955675878888}
@@ -463,7 +478,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 65, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 21.694, y: 3.9}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 145.39587, y: 70.45992}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &1987471787955396755
@@ -605,10 +620,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
-    m_FontStyle: 0
+    m_FontSize: 15
+    m_FontStyle: 1
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 1
     m_MaxSize: 40
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -629,7 +644,7 @@ GameObject:
   - component: {fileID: 1236704432638529341}
   - component: {fileID: 1791745857944324281}
   m_Layer: 0
-  m_Name: CostText
+  m_Name: SellText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -731,10 +746,10 @@ RectTransform:
   m_Father: {fileID: 4506461955675878888}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 35.91925, y: -23.959213}
-  m_SizeDelta: {x: 71.8385, y: 47.918427}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6553233938615289253
 CanvasRenderer:
@@ -816,7 +831,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7123083528462017338}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7780220578827229713}
+        m_TargetAssemblyTypeName: Sandbox.Gary.NodeUI, Assembly-CSharp
+        m_MethodName: UpgradeBtnClicked
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &8449140592489326848
 GameObject:
   m_ObjectHideFlags: 0
@@ -884,10 +911,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
-    m_FontStyle: 0
+    m_FontSize: 15
+    m_FontStyle: 1
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 1
     m_MaxSize: 40
     m_Alignment: 4
     m_AlignByGeometry: 0

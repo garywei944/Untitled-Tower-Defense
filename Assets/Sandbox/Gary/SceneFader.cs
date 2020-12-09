@@ -18,7 +18,6 @@ namespace Sandbox.Gary
 
         private IEnumerator FadeIn()
         {
-            GameManager.ResetGame();
             var t = 1.0f;
             while (t > 0)
             {
