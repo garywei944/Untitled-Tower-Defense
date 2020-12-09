@@ -8,12 +8,14 @@ namespace Sandbox.Gary
 {
     public class Node : MonoBehaviour
     {
-        public Vector3 offset = new Vector3(0, 0.5f, 0);
-
         public Color hoverColor = Color.gray;
         public Color noEnoughMoneyColor = Color.magenta;
+        public Vector3 offset = new Vector3(0, 0.5f, 0);
+        public Vector3 uiOffset = new Vector3(0, 5f, 5f);
+
         private Color _initColor;
         private Renderer _render;
+        private GameObject _turret;
 
         // Start is called before the first frame update
         private void Start()
@@ -24,27 +26,44 @@ namespace Sandbox.Gary
 
         private void OnMouseEnter()
         {
-            if (!BuildManager.Instance.CanBuild) return;
-
-            if (BuildManager.Instance.HasEnoughMoney)
+            // Change color of the node
+            if (BuildManager.Instance.CanBuild)
             {
-                _render.material.color = hoverColor;
-            }
-            else
-            {
-                _render.material.color = noEnoughMoneyColor;
+                if (BuildManager.Instance.HasEnoughMoney)
+                {
+                    _render.material.color = hoverColor;
+                }
+                else
+                {
+                    _render.material.color = noEnoughMoneyColor;
+                }
             }
         }
 
         private void OnMouseExit()
         {
-            if (!BuildManager.Instance.CanBuild) return;
             _render.material.color = _initColor;
         }
 
         private void OnMouseDown()
         {
+            // Return if it is clicked over UI
             if (EventSystem.current.IsPointerOverGameObject()) return;
+
+            // Return if there is already a turret on the node
+            if (_turret)
+            {
+                // Display NodeUI
+                BuildManager.Instance.SelectNode(this);
+
+                return;
+            }
+
+            // Unselect node
+            BuildManager.Instance.Unselect();
+
+            // Build turret if has enough money
+            // BUG: Return if no turret selected
             if (!BuildManager.Instance.CanBuild) return;
             if (BuildManager.Instance.HasEnoughMoney)
             {
@@ -60,12 +79,17 @@ namespace Sandbox.Gary
         private void BuildTurret()
         {
             PlayerStatus.Money -= BuildManager.Instance.SelectedTurret.cost;
-            Instantiate(BuildManager.Instance.SelectedTurret.prefab, GetPosition(), Quaternion.identity);
+            _turret = Instantiate(BuildManager.Instance.SelectedTurret.prefab, GetPosition(), Quaternion.identity);
         }
 
         private Vector3 GetPosition()
         {
             return transform.position + offset;
+        }
+
+        public Vector3 GetUIPosition()
+        {
+            return transform.position + uiOffset;
         }
     }
 }
