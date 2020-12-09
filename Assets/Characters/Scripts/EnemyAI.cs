@@ -53,7 +53,7 @@ namespace Sandbox.Gary
                 transform.rotation = Quaternion.Euler(0, 180, 0);
             }
 
-            _controller.Move(direction.normalized * (_moveSpeed * Time.deltaTime));
+            transform.position += direction.normalized * (_moveSpeed * Time.deltaTime);
 
             // Fix the HP bar rotation
             _canvas.transform.rotation = Quaternion.Euler(45, 0, 0);
@@ -80,10 +80,6 @@ namespace Sandbox.Gary
             if (PlayerStatus.Lives > 0)
             {
                 PlayerStatus.Lives--;
-            }
-            else
-            {
-                Debug.Log("Lose");
             }
 
             EnemySpawner.EnemyAlive--;
