@@ -65,7 +65,7 @@ namespace Sandbox.Gary
             BuildManager.Instance.Unselect();
 
             // Build turret if has enough money
-            // BUG: Return if no turret selected
+            // Return if no turret selected
             if (!BuildManager.Instance.CanBuild) return;
             if (BuildManager.Instance.HasEnoughMoney)
             {

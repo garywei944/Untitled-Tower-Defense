@@ -5009,7 +5009,7 @@ MonoBehaviour:
   range: 60
   rotSpeed: 10
   target: {fileID: 0}
-  bulletPrefab: {fileID: 4656603490940294640, guid: 82b6c902437dce14d98b5ca383d03a05, type: 3}
+  bulletPrefab: {fileID: 6648383820490798286, guid: a1a8c1ad7992ae54da34b72a6dd90a97, type: 3}
   bulletRate: 2
   useLaser: 0
   lineRender: {fileID: 0}

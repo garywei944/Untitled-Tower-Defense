@@ -5140,7 +5140,7 @@ MonoBehaviour:
   range: 50
   rotSpeed: 6
   target: {fileID: 0}
-  bulletPrefab: {fileID: 9016501058059125643, guid: f1c1c0f7b434fc74ba9c153812254759, type: 3}
+  bulletPrefab: {fileID: 4861835949774468311, guid: 14919e088a459ef42b5b80255d87d49f, type: 3}
   bulletRate: 0.5
   useLaser: 0
   lineRender: {fileID: 0}

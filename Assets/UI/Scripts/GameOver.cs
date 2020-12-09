@@ -18,12 +18,12 @@ namespace Sandbox.Gary
 
         public void RetryBtn()
         {
-            sceneFader.FadeOut(SceneManager.GetActiveScene().name);
+            sceneFader.FadeOut(SceneManager.GetActiveScene().buildIndex);
         }
 
         public void MenuBtn()
         {
-            // TODO: to Menu
+            sceneFader.FadeOut(0);
         }
 
         private IEnumerator ShowRoundsText()
