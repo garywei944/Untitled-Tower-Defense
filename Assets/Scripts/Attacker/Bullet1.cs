@@ -28,6 +28,6 @@ public class Bullet1 : MonoBehaviour
     {
         Destroy(gameObject);
         Debug.Log("hit");
-        other.gameObject.GetComponent<EnemyHealth>().Damage(20);
+        other.gameObject.GetComponent<EnemyHealth>().Damage(20, EnemyHealth.DamageType.Bullet);
     }
 }
