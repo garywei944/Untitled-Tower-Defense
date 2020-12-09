@@ -4,13 +4,15 @@ namespace Sandbox.Gary
 {
     public class EnemyAI : MonoBehaviour
     {
-        public float speed = 10;
+        public float startSpeed = 10;
+        private float _moveSpeed;
 
         private Transform _target;
         private int _pointIndex;
 
         private Animator _animator;
         private CharacterController _controller;
+        private Canvas _canvas;
         private static readonly int AnimationPar = Animator.StringToHash("AnimationPar");
 
 
@@ -19,6 +21,8 @@ namespace Sandbox.Gary
             _target = PathPoints.pathPoints[_pointIndex];
             _animator = gameObject.GetComponentInChildren<Animator>();
             _controller = GetComponent<CharacterController>();
+            _canvas = gameObject.GetComponentInChildren<Canvas>();
+            _moveSpeed = startSpeed;
         }
 
         private void Update()
@@ -46,8 +50,10 @@ namespace Sandbox.Gary
                 transform.rotation = Quaternion.Euler(0, 180, 0);
             }
 
+            _controller.Move(direction.normalized * (_moveSpeed * Time.deltaTime));
 
-            _controller.Move(direction.normalized * (speed * Time.deltaTime));
+            // Fix the HP bar rotation
+            _canvas.transform.rotation = Quaternion.Euler(45, 0, 0);
 
             // Reach the current path point
             if (Vector3.Distance(_target.position, transform.position) < err / 2)
@@ -61,12 +67,29 @@ namespace Sandbox.Gary
 
                 _target = PathPoints.pathPoints[_pointIndex];
             }
+
+            // Reset speed
+            _moveSpeed = startSpeed;
         }
 
         private void PathEnd()
         {
+            if (PlayerStatus.Lives > 0)
+            {
+                PlayerStatus.Lives--;
+            }
+            else
+            {
+                Debug.Log("Lose");
+            }
+
             EnemySpawner.EnemyAlive--;
             Destroy(gameObject);
+        }
+
+        public void Slow(float pct)
+        {
+            _moveSpeed = startSpeed * (1 - pct);
         }
     }
 }

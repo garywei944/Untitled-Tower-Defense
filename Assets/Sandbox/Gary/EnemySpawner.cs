@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Sandbox.Gary
 {
@@ -9,11 +10,12 @@ namespace Sandbox.Gary
 
         public Wave[] waveEnemy;
         public float spawnInterval = 5.0f;
+        public Text TimerText;
 
         private Transform _spawnPoint;
+
         private float _countDown;
         private int _waveIndex;
-
 
         // Start is called before the first frame update
         private void Start()
@@ -25,6 +27,12 @@ namespace Sandbox.Gary
         // Update is called once per frame
         private void Update()
         {
+            if (GameManager.IsOver)
+            {
+                EnemyAlive = 0;
+                return;
+            }
+
             if (EnemyAlive > 0)
             {
                 return;
@@ -37,6 +45,10 @@ namespace Sandbox.Gary
             }
 
             _countDown -= Time.deltaTime;
+            _countDown = Mathf.Clamp(_countDown, 0, Mathf.Infinity);
+            var msg = _countDown > 0 ? $"Next Wave in {_countDown:00.00}s" : $"Wave {PlayerStatus.Rounds + 1}";
+
+            TimerText.text = msg;
             if (_countDown <= 0)
             {
                 _countDown = spawnInterval;
@@ -55,6 +67,8 @@ namespace Sandbox.Gary
             {
                 yield break;
             }
+
+            PlayerStatus.Rounds++;
 
             var wave = waveEnemy[_waveIndex];
             EnemyAlive = wave.count;
