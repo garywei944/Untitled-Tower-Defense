@@ -18,5 +18,11 @@ namespace Sandbox.Gary
             Lives = startLives;
             Rounds = 0;
         }
+
+        public static void AddMoney()
+        {
+            Money += 50;
+        }
+
     }
 }

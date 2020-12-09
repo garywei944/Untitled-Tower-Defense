@@ -1097,7 +1097,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startSpeed: 20
-  moveSpeed: 0
+  enterClip: {fileID: 8300000, guid: 652126d621fa70a4490b84bb78791054, type: 3}
 --- !u!114 &1138634081498190730
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1112,6 +1112,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initHealth: 100
   hpBar: {fileID: 6473446394694532651}
+  bulletClip: {fileID: 8300000, guid: 3bc7d316717f9a147a56013ec963b9e9, type: 3}
+  missileClip: {fileID: 8300000, guid: a111ef4873f8ae140a1d0ce3c3ade726, type: 3}
+  laserClip: {fileID: 8300000, guid: 817067c84617c204fb2d322bcdf54a57, type: 3}
 --- !u!1 &3806632097107886433
 GameObject:
   m_ObjectHideFlags: 0

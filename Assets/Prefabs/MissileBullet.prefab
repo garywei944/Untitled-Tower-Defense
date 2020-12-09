@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7061746356258527009}
   - component: {fileID: 5248104992998740305}
   m_Layer: 0
-  m_Name: Misile
+  m_Name: MissileBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -60,7 +60,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 60
-  damage: 200
+  damage: 50
   explosionRadius: 10
 --- !u!1 &9016968477647994985
 GameObject:
