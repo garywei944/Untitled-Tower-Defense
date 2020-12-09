@@ -1,11 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class FinalZone : MonoBehaviour
 {
     public static FinalZone instance;
+
+    public GameObject winPanel;
+    public Button nextButton;
 
     public int reachNumber;
     public int winCondition = 5;
@@ -14,6 +18,10 @@ public class FinalZone : MonoBehaviour
     {
         instance = this;
         reachNumber = 0;
+
+        winPanel.SetActive(false);
+
+        nextButton.onClick.AddListener(LoadNextPage);
     }
 
     public FinalZone GetInstance()
@@ -29,8 +37,13 @@ public class FinalZone : MonoBehaviour
         if(reachNumber >= winCondition)
         {
             Debug.Log("win");
-            SceneManager.LoadScene("WinPage", LoadSceneMode.Single);
+            winPanel.SetActive(true);
         }
+    }
+
+    void LoadNextPage()
+    {
+        SceneManager.LoadScene("WinPage", LoadSceneMode.Single);
     }
 
     public void AddReachNum()
