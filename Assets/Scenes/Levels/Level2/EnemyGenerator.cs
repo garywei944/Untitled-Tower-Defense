@@ -33,14 +33,14 @@ public class EnemyGenerator : MonoBehaviour
     {
         if (index >= totalEnemy.Length)
             return;
-        StartCoroutine(GenerateSingleEnemy());
+        StartCoroutine(GenerateSingleEnemy(index));
         Debug.Log("AAA");
         index++;
     }
 
-    private IEnumerator GenerateSingleEnemy()
+    private IEnumerator GenerateSingleEnemy(int idx)
     {
-        for(int i = 0; i < totalEnemy[index]; i++)
+        for(int i = 0; i < totalEnemy[idx]; i++)
         {
             Instantiate(enemyPrefab, generatePoint.position, generatePoint.rotation);
             yield return new WaitForSeconds(1.0f);

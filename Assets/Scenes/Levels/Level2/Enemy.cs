@@ -23,6 +23,8 @@ public class Enemy : MonoBehaviour
     private bool autoMoving;
     private bool thirdPersonView;
 
+    public GameObject finalZone;
+
 
     private void Start()
     {
@@ -33,6 +35,7 @@ public class Enemy : MonoBehaviour
 
         enemyCamera.SetActive(false);
         mainCamera = GameObject.Find("MainCamera");
+        finalZone = GameObject.Find("Final");
     }
 
     private void Update()
@@ -79,10 +82,21 @@ public class Enemy : MonoBehaviour
             if (_pointIndex >= PathPoints.pathPoints.Length)
             {
                 Destroy(gameObject);
+                Debug.Log("reach end");
+                finalZone.GetComponent<FinalZone>().reachNumber += 1;
                 return;
             }
 
             _target = PathPoints.pathPoints[_pointIndex];
+        }
+
+        if(Vector3.Distance(transform.position, new Vector3(0, 0, 0)) < err / 2)
+        {
+            Destroy(gameObject);
+            Debug.Log("reach end");
+            OnMouseUpAsButton();
+            finalZone.GetComponent<FinalZone>().reachNumber += 1;
+            return;
         }
     }
 
@@ -120,17 +134,5 @@ public class Enemy : MonoBehaviour
 
         controller.Move(direction.normalized * (speed * Time.deltaTime));
 
-        //// Reach the current path point
-        //if (Vector3.Distance(_target.position, transform.position) < err / 2)
-        //{
-        //    _pointIndex++;
-        //    if (_pointIndex >= PathPoints.pathPoints.Length)
-        //    {
-        //        Destroy(gameObject);
-        //        return;
-        //    }
-
-        //    _target = PathPoints.pathPoints[_pointIndex];
-        //}
     }
 }

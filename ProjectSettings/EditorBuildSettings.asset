@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Sandbox/Gary/Demo Level.unity
-    guid: e63508ffbaa02ed488e3a51dacbafd1a
+    path: Assets/Scenes/WinPage.unity
+    guid: b77ca4813a01c1a43b8dbc832f93e423
+  - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: c6654396eeec4b240817b7e25524d53c
   m_configObjects: {}
