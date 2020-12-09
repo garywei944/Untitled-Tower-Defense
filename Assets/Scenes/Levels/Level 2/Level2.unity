@@ -2744,7 +2744,7 @@ MonoBehaviour:
   turretPrefabs:
   - {fileID: 1591110490357510, guid: d4af3966dba2cd746ab019083640eb8c, type: 3}
   - {fileID: 1875090778556656, guid: 7191a0df8b6695d449a0f18a361bc311, type: 3}
-  generateInterval: 1
+  generateInterval: 15
 --- !u!4 &335293587
 Transform:
   m_ObjectHideFlags: 0
@@ -13853,7 +13853,7 @@ MonoBehaviour:
   generatePoint: {fileID: 1716346617}
   finalZone: {fileID: 1911800534}
   generateInterval: 5
-  totalEnemy: 01000000010000000100000001000000
+  totalEnemy: 01000000020000000300000004000000
   index: 0
   livingEnemy: 0
 --- !u!4 &1598355034
