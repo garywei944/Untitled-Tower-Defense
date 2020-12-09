@@ -28,12 +28,12 @@ namespace Sandbox.Gary
             }
         }
 
-        public void FadeOut(int index)
+        public void FadeOut(string sceneName)
         {
-            StartCoroutine(FadeOutByTime(index));
+            StartCoroutine(FadeOutByTime(sceneName));
         }
 
-        private IEnumerator FadeOutByTime(int index)
+        private IEnumerator FadeOutByTime(string sceneName)
         {
             var t = 0.0f;
             while (t < 1)
@@ -44,7 +44,7 @@ namespace Sandbox.Gary
                 yield return null;
             }
 
-            SceneManager.LoadScene(index, LoadSceneMode.Single);
+            SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
         }
     }
 }

@@ -6,15 +6,10 @@ namespace Sandbox.Gary
     public class GameManager : MonoBehaviour
     {
         public GameObject gameOverUI;
-        public GameObject winLevelUI;
         public static bool IsOver;
-        private static GameManager _instance;
-
-        public static GameManager Instance => _instance;
 
         private void Awake()
         {
-            _instance = this;
             IsOver = false;
         }
 
@@ -31,12 +26,6 @@ namespace Sandbox.Gary
         {
             IsOver = true;
             gameOverUI.SetActive(true);
-        }
-
-        public void GameWin()
-        {
-            IsOver = true;
-            winLevelUI.SetActive(true);
         }
     }
 }

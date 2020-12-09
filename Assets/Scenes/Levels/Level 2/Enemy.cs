@@ -49,10 +49,11 @@ public class Enemy : MonoBehaviour
             if (Input.GetKey("w") || Input.GetKey(KeyCode.UpArrow))
             {
                 _animator.SetInteger("AnimationPar", 1);
+                //TODO moving
             }
             else
             {
-                _animator.SetInteger("AnimationPar", 0);
+                _animator.SetInteger("AnimationPar", 0); //not moving!!!
             }
             moveDirection = transform.forward * Input.GetAxis("Vertical") * speed;
 
@@ -83,7 +84,10 @@ public class Enemy : MonoBehaviour
         if(Vector3.Distance(transform.position, new Vector3(0, 0, 0)) < err / 2)
         {
             Debug.Log("reach end");
-            Die();
+            //TODO reach end zone
+            mainCamera.SetActive(true);
+            enemyCamera.SetActive(false);
+            Destroy(gameObject);
             finalZone.GetComponent<FinalZone>().reachNumber += 1;
             return;
         }
@@ -91,6 +95,7 @@ public class Enemy : MonoBehaviour
 
     public void Die()
     {
+        //TODO die
         mainCamera.SetActive(true);
         enemyCamera.SetActive(false);
         Destroy(gameObject);
@@ -106,6 +111,7 @@ public class Enemy : MonoBehaviour
 
     private void AutoMove()
     {
+       //TODO moving
         _animator.SetInteger(AnimationPar, 1);
 
         // Update move
