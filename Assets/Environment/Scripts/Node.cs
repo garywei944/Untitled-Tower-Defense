@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.PlayerLoop;
 using UnityEngine.Serialization;
 using UnityEngine.EventSystems;
+using Random = System.Random;
 
 namespace Sandbox.Gary
 {
@@ -19,11 +20,17 @@ namespace Sandbox.Gary
         private Renderer _render;
         private GameObject _turret;
 
+        private readonly Random _random = new Random();
+
         // Start is called before the first frame update
         private void Start()
         {
             _render = GetComponent<MeshRenderer>();
-            _initColor = _render.material.color;
+            var color = _render.material.color;
+            _initColor =
+                new Color(color.r - _random.Next(100) / 300f, color.g - _random.Next(100) / 300f,
+                    color.b - _random.Next(100) / 300f);
+            _render.material.color = _initColor;
         }
 
         private void OnMouseEnter()

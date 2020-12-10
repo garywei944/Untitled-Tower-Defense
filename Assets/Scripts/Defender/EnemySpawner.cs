@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
+using Random = System.Random;
 
 namespace Sandbox.Gary
 {
@@ -9,14 +12,18 @@ namespace Sandbox.Gary
     {
         public static int EnemyAlive;
 
+        public bool unlimit;
         public Wave[] waveEnemy;
         public float spawnInterval = 5.0f;
         public Text TimerText;
+        public List<GameObject> prefabs;
 
         private Transform _spawnPoint;
 
         private float _countDown;
         private int _waveIndex;
+
+        private readonly Random _random = new Random();
 
         // Start is called before the first frame update
         private void Start()
@@ -39,10 +46,13 @@ namespace Sandbox.Gary
                 return;
             }
 
-            if (_waveIndex == waveEnemy.Length)
+            if (!unlimit)
             {
-                GameManager.Instance.GameWin();
-                enabled = false;
+                if (_waveIndex == waveEnemy.Length)
+                {
+                    GameManager.Instance.GameWin();
+                    enabled = false;
+                }
             }
 
             _countDown -= Time.deltaTime;
@@ -64,14 +74,21 @@ namespace Sandbox.Gary
 
         private IEnumerator WaveEnemy()
         {
-            if (_waveIndex >= waveEnemy.Length)
+            if (!unlimit)
             {
-                yield break;
+                if (_waveIndex >= waveEnemy.Length)
+                {
+                    yield break;
+                }
             }
 
             PlayerStatus.Rounds++;
 
-            var wave = waveEnemy[_waveIndex];
+            var index = _random.Next(3);
+
+            var wave = _waveIndex >= waveEnemy.Length
+                ? new Wave(prefabs[index], _random.Next(3, 12), _random.Next(10) / 10.0f)
+                : waveEnemy[_waveIndex];
             EnemyAlive = wave.count;
 
             for (var i = 0; i < wave.count; i++)

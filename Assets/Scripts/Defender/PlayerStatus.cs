@@ -5,9 +5,9 @@ namespace Sandbox.Gary
 {
     public class PlayerStatus : MonoBehaviour
     {
-        public static int startMoney = 500;
+        public static readonly int startMoney = 500;
         public static int Money;
-        public static int startLives = 3;
+        public static readonly int startLives = 5;
         public static int Lives;
 
         public static int Rounds;
@@ -23,6 +23,5 @@ namespace Sandbox.Gary
         {
             Money += 50;
         }
-
     }
 }
