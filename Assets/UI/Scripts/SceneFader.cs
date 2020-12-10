@@ -13,7 +13,7 @@ namespace Sandbox.Gary
         // Start is called before the first frame update
         private void Start()
         {
-            GameManager.Instance.ResetGame();
+            // GameManager.Instance.ResetGame();
             StartCoroutine(FadeIn());
         }
 
