@@ -11,6 +11,7 @@ public class MainMenuScript : MonoBehaviour
     public Button quitButton;
     public Button levelOne;
     public Button levelTwo;
+    public Button levelThree;
     public Button backButtonLevel;
     public Button backButtonHelp;
     public Button aboutButton;
@@ -33,10 +34,11 @@ public class MainMenuScript : MonoBehaviour
         startButton.onClick.AddListener(ChooseLevel);
         helpButton.onClick.AddListener(ShowInstruction);
 
-        levelButtons = new Button[2];
+        levelButtons = new Button[3];
         levelButtons[0] = levelOne;
         levelButtons[1] = levelTwo;
-        for(int i = 0; i < 2; i++)
+        levelButtons[2] = levelThree;
+        for(int i = 0; i < 3; i++)
         {
             int index = i;
             levelButtons[i].onClick.AddListener(delegate ()
@@ -50,12 +52,6 @@ public class MainMenuScript : MonoBehaviour
         backButtonLevel.onClick.AddListener(BackToMainMenu);
         backButtonAbout.onClick.AddListener(BackToMainMenu);
         quitButton.onClick.AddListener(QuitGame);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     void ShowAbout()
@@ -95,6 +91,5 @@ public class MainMenuScript : MonoBehaviour
     void QuitGame()
     {
         Application.Quit();
-        UnityEditor.EditorApplication.isPlaying = false;
     }
 }

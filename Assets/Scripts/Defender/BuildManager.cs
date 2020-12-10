@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.Serialization;
+using Random = System.Random;
 
 namespace Sandbox.Gary
 {

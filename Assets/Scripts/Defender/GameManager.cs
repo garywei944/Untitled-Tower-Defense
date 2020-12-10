@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using Random = System.Random;
 
 namespace Sandbox.Gary
 {
@@ -12,6 +13,8 @@ namespace Sandbox.Gary
         private static GameManager _instance;
 
         public static GameManager Instance => _instance;
+
+        private readonly Random _random = new Random();
 
         private void Awake()
         {
@@ -51,6 +54,11 @@ namespace Sandbox.Gary
             PlayerStatus.Money = PlayerStatus.startMoney;
             PlayerStatus.Lives = PlayerStatus.startLives;
             PlayerStatus.Rounds = 0;
+        }
+
+        public int NextRandom()
+        {
+            return _random.Next(100);
         }
     }
 }

@@ -87,7 +87,7 @@ namespace Sandbox.Gary
             var index = _random.Next(3);
 
             var wave = _waveIndex >= waveEnemy.Length
-                ? new Wave(prefabs[index], _random.Next(3, 12), _random.Next(10) / 10.0f)
+                ? new Wave(prefabs[index], _random.Next(3, 12 + PlayerStatus.Rounds * 2), _random.Next(10) / 10.0f)
                 : waveEnemy[_waveIndex];
             EnemyAlive = wave.count;
 

@@ -7,6 +7,7 @@ public class TurretGenerator : MonoBehaviour
     public GameObject[] turretPrefabs = new GameObject[2]; //change number to total turret
     public float generateInterval = 20f;
     private float countDown;
+    public Sandbox.Gary.PauseUI pauseUI;
 
     private System.Random r;
 
@@ -18,7 +19,7 @@ public class TurretGenerator : MonoBehaviour
         //generate a turret at random position
         int x = r.Next(0, 16);
         int y = r.Next(0, 16);
-        while (LevelMap.instance.GetLevelMap[x,y] == 0)
+        while (LevelMap.instance.GetLevelMap[x, y] == 0)
         {
             x = r.Next(0, 16);
             y = r.Next(0, 16);
@@ -33,6 +34,11 @@ public class TurretGenerator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            pauseUI.SwitchUI();
+        }
+
         countDown -= Time.deltaTime;
         if (countDown <= 0)
         {
@@ -69,33 +75,34 @@ public class TurretGenerator : MonoBehaviour
 
     private Vector3 NearestPathNode(int x, int y)
     {
-        int[] dx = new int[] { 0, 1, 0, -1 };
-        int[] dy = new int[] { 1, 0, -1, 0 };
+        int[] dx = new int[] {0, 1, 0, -1};
+        int[] dy = new int[] {1, 0, -1, 0};
 
         int resultX = -1;
         int resultY = -1;
         int turretX = x;
         int turretY = y;
-        
+
         //BFS
         ArrayList found = new ArrayList();
         ArrayList toFind = new ArrayList();
 
         toFind.Add(Coor(x, y));
-        while(toFind.Count != 0)
+        while (toFind.Count != 0)
         {
-            int n = (int)toFind[0];
+            int n = (int) toFind[0];
             toFind.RemoveAt(0);
             x = CoorX(n);
             y = CoorY(n);
 
-            if(LevelMap.instance.GetLevelMap[x, y] == 0)
+            if (LevelMap.instance.GetLevelMap[x, y] == 0)
             {
                 resultX = x;
                 resultY = y;
                 break;
             }
-            for(int i = 0; i < 4; i++)
+
+            for (int i = 0; i < 4; i++)
             {
                 if (InRange(x + dx[i], y + dy[i]))
                     toFind.Add(Coor(x + dx[i], y + dy[i]));
